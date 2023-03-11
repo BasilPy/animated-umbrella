@@ -11,5 +11,6 @@ async def on_startup(_):
 
 client.register_handlers_client(dispatcher)
 
+
 if __name__ == "__main__":
     executor.start_polling(dispatcher, on_startup=on_startup)

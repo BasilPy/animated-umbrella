@@ -1,6 +1,5 @@
 from aiogram import Bot, Dispatcher
-from token import TOKEN
-from os import environ
+from tok import TOKEN
 
 bot = Bot(token=TOKEN)
 dispatcher = Dispatcher(bot)

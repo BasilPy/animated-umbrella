@@ -7,6 +7,7 @@ from common import get_category_items_markup, get_categories_markup, get_title_o
 from menus.fork_vs_finish.fork_decision import fork_finish
 from menus.items_menus_keybords.juices import all_juice_fork
 from db_sqlite import sqlite_db_edit
+from google_sheets import add_data_to_sheet
 
 
 async def set_default_commands(db : Dispatcher):
@@ -20,7 +21,7 @@ async def set_default_commands(db : Dispatcher):
 async def welcome_and_choose_language(message: types.Message):
     user_id = message.from_user.id
     username = message.from_user.username
-    formatted_date = datetime.date.today().strftime("%d/%m/%Y")
+    formatted_date = datetime.datetime.now().strftime('%H:%M:%S')
     sqlite_db_edit.add_new_bot_client(formatted_date, user_id, username)
     print("client +")
     greeting = await message.reply("Hello Almaty! This is Stәnd By Club \
@@ -71,7 +72,7 @@ async def pass_items_to_show_basket(call: types.CallbackQuery):
 
 
 async def clear_and_go_to_main_menu(call: types.CallbackQuery):
-    sqlite_db_edit.clear_by_id(call.from_user.id, datetime.date.today().strftime("%d/%m/%Y"))
+    sqlite_db_edit.clear_by_id(call.from_user.id)
     new_call = types.CallbackQuery()
     await call.message.answer(
         text=f"all clear :)",
@@ -93,6 +94,16 @@ async def pass_fork_decision(call: types.CallbackQuery):
     )
 
 
+async def send_row_to_google_sheets(call: types.CallbackQuery):
+    print(sqlite_db_edit.get_one_raw(call.from_user.id))
+    add_data_to_sheet.add_users_string(sqlite_db_edit.get_one_raw(call.from_user.id))
+    current_lang = str(sqlite_db_edit.get_user_lang(call.from_user.id))
+    sqlite_db_edit.update_time(call.from_user.id, datetime.datetime.now().strftime('%-H:%-M:%-S'))
+    await call.message.answer(
+        text="please send a screenshot",
+    )
+
+
 def register_handlers_client(_dispatcher: Dispatcher):
     _dispatcher.register_message_handler(welcome_and_choose_language, commands=['start', 'help', 'again'])
     _dispatcher.register_callback_query_handler(pass_category_by_language, text=['kz', 'ru', 'eng'])
@@ -104,3 +115,4 @@ def register_handlers_client(_dispatcher: Dispatcher):
     _dispatcher.register_callback_query_handler(pass_fork_decision, text=all_list_id)
     _dispatcher.register_callback_query_handler(pass_items_to_show_basket, text=["basket"])
     _dispatcher.register_callback_query_handler(clear_and_go_to_main_menu, text=["clear"])
+    _dispatcher.register_callback_query_handler(send_row_to_google_sheets, text=["end"])

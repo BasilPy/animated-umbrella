@@ -71,7 +71,7 @@ def get_order_and_total_cost(id_: str):
     return data
 
 
-def clear_by_id(id_: str, time: str):
+def clear_by_id(id_: str):
     conn = sqlite3.connect('./db_sqlite/clients_stand_by.db')
     c = conn.cursor()
     print("d")
@@ -87,3 +87,12 @@ def get_one_raw(id_: str):
     cur.execute('SELECT * FROM bot_users WHERE user_id = ?', (id_,))
     row = cur.fetchone()
     return row
+
+
+def update_time(id_: str, time: str):
+    conn = sqlite3.connect('./db_sqlite/clients_stand_by.db')
+    c = conn.cursor()
+    c.execute(f'UPDATE bot_users SET time = ? \
+              WHERE user_id = ?', (time, id_))
+    conn.commit()
+    conn.close()

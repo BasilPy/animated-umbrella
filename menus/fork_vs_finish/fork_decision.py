@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from menus.models import MultiLangText, FinishFork, MenuItem
-
+from db_sqlite import sqlite_db_edit
 
 fork_finish = FinishFork(
     title=MultiLangText(
@@ -21,11 +21,11 @@ fork_finish = FinishFork(
         MenuItem(
             name=MultiLangText(
                 eng="Сomplete the order",
-                ru="Заверщи",
+                ru="Завершить",
                 kz="тапсырысты аяқтаңыз"
             ),
             price=0,
-            item_id="order"
+            item_id="end"
         ),
         MenuItem(
 
