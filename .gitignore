@@ -1,0 +1,4 @@
+# created by virtualenv automatically
+venv
+./google_sheets/db_sbc.json
+token.py
