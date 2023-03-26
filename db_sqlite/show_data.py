@@ -15,5 +15,3 @@ def get_one_raw(id_: str):
     cur.execute('SELECT * FROM bot_users WHERE user_id = ?', (id_,))
     row = cur.fetchone()
     print(row)
-
-# get_one_raw("244623926")

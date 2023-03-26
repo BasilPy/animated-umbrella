@@ -16,7 +16,7 @@ fork_finish = FinishFork(
                 kz="Негізгі мәзірге оралу"
             ),
             price=0,
-            item_id="ru"
+            item_id="lang"
         ),
         MenuItem(
             name=MultiLangText(

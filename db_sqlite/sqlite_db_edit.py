@@ -21,11 +21,13 @@ def add_new_bot_client(time: str, id_: str, name: str):
     c = conn.cursor()
     default = "ru"
     if id_exists(id_) == 0:
-        # time, user_id, username, orders, payment_sum, language
-        c.execute(f"INSERT INTO bot_users VALUES ('{time}',{id_}, '{name}', '', '', '{default}')")
+        # time TEXT, user_id INTEGER PRIMARY KEY, username TEXT, \
+        #    orders TEXT, payment_sum INTEGER, lang TEXT, payment_type TEXT)
+        #  time, user_id, username, orders, payment_sum, language, payment_type
+        c.execute(f"INSERT INTO bot_users VALUES ('{time}',{id_}, '{name}', '', '', '{default}', '', {-1})")
     else:
-        c.execute(f'UPDATE bot_users SET orders = ?, payment_sum = ?\
-              WHERE user_id = {id_}', ("", 0))
+        c.execute(f'UPDATE bot_users SET time = ?, orders = ?, payment_sum = ?\
+              WHERE user_id = {id_}', (time, "", 0))
     conn.commit()
     conn.close()
 
@@ -75,7 +77,7 @@ def clear_by_id(id_: str):
     conn = sqlite3.connect('./db_sqlite/clients_stand_by.db')
     c = conn.cursor()
     print("d")
-    c.execute('UPDATE bot_users SET time = ?, orders = ?, payment_sum = ? WHERE user_id = ?', (time, " ", 0, id_))
+    c.execute('UPDATE bot_users SET orders = ?, payment_sum = ? WHERE user_id = ?', (" ", 0, id_))
     print("a")
     conn.commit()
     conn.close()
@@ -94,5 +96,14 @@ def update_time(id_: str, time: str):
     c = conn.cursor()
     c.execute(f'UPDATE bot_users SET time = ? \
               WHERE user_id = ?', (time, id_))
+    conn.commit()
+    conn.close()
+
+
+def update_payment_type_and_num_order(time_: str, id_: str, payment_type_: str, num: int):
+    conn = sqlite3.connect('./db_sqlite/clients_stand_by.db')
+    c = conn.cursor()
+    c.execute(f'UPDATE bot_users SET time = ?, payment_type = ?, num_order = ?\
+              WHERE user_id = ?', (time_, payment_type_, num, id_))
     conn.commit()
     conn.close()

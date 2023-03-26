@@ -3,38 +3,90 @@ from menus.models import MenuItem, MultiLangText
 all_cocktails = [
     MenuItem(
         name=MultiLangText(
-            eng='ABSOLUT with juice 🍹 2000₸',
-            ru='ABSOLUT c соком 🍹2000₸',
-            kz='Шырын қосылған ABSOLUTE 🍹 2000₸'
+            eng='WHISKEY COLA 🥃 2500₸',
+            ru='WHISKEY COLA 🥃 2500₸',
+            kz='WHISKEY COLA 🥃 2500₸'
         ),
-        price=2000,
-        item_id='absolut_j'
+        price=2500,
+        item_id='whiskey_cola'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='JAMESON with juice 🥃 2000₸',
-            ru='JAMESON с соком 🥃 2000₸',
-            kz='Шырын қосылған JAMESON 🥃 2000₸'
+            eng='Gin and tonic 🍸 2500₸',
+            ru='ДЖИН ТОНИК 🍸 2500₸',
+            kz='Джин және тоник 🍸 2500₸'
         ),
-        price=2000,
-        item_id='jameson_j'
-    ),
-    MenuItem(
-        name=MultiLangText(
-            eng='Gin and tonic 🍸 2000₸',
-            ru='ДЖИН ТОНИК 🍸 2000₸',
-            kz='Джин және тоник 🍸 2000₸'
-        ),
-        price=2000,
+        price=2500,
         item_id='gin_ton'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='Rum with mint soda 🥃 2000₸',
-            ru='РОМ с мятной содовой 🥃 2000₸',
-            kz='Жалбыз содасы бар ром 🥃 2000₸'
+            eng='ORANGE&SPRITE 🥤 2500₸',
+            ru='ORANGE&SPRITE 🥤 2500₸',
+            kz='ORANGE&SPRITE 🥤 2500₸'
         ),
-        price=2000,
-        item_id='rom_soda'
-    )
+
+        price=2500,
+        item_id='orange_sprite'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='SCREWDRIVER 🥤 2500₸',
+            ru='SCREWDRIVER 🥤 2500₸',
+            kz='SCREWDRIVER 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='screwdriver'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='CUBA LIBRE 🥤 2500₸',
+            ru='CUBA LIBRE 🥤 2500₸',
+            kz='CUBA LIBRE 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='cuba_libre'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='PINA COLADA LITE 🥤 2500₸',
+            ru='PINA COLADA LITE 🥤 2500₸',
+            kz='PINA COLADA LITE 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='pina_colada_lite'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='TOM COLLINS 🥤 2500₸',
+            ru='TOM COLLINS 🥤 2500₸',
+            kz='TOM COLLINS 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='tom_collins'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='PALOMA 🥤 2500₸',
+            ru='PALOMA 🥤 2500₸',
+            kz='PALOMA 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='paloma'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='APEROL SPRITZ 🥤 2500₸',
+            ru='APEROL SPRITZ 🥤 2500₸',
+            kz='APEROL SPRITZ 🥤 2500₸'
+        ),
+
+        price=2500,
+        item_id='aperol_spritz'
+    ),
 ]

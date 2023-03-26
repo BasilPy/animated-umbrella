@@ -12,7 +12,7 @@ sheet_list = document.worksheets()
 
 
 def check_existence(name_sheet: str):
-    if any(sheet.title == datetime.date.today().strftime("%d/%m/%Y") for sheet in sheet_list):
+    if any(sheet.title == name_sheet for sheet in sheet_list):
         return 1
     else:
         return 0
@@ -20,10 +20,9 @@ def check_existence(name_sheet: str):
 
 def create_or_open(name_date: str):
     if not check_existence(name_date):
-        new_sheet = document.add_worksheet(title=name_date, rows='1000', cols='10')
-        first_line = ["time", "user_id", "username", "orders", "payment_sum", "language"]
-        for i in range(1, len(first_line) + 1):
-            new_sheet.update_cell(1, i, first_line[i - 1])
+        new_sheet = document.add_worksheet(title=name_date, rows='1000', cols='12')
+        first_line = ["time", "user_id", "username",
+                      "order", "payment_sum", "language", "payment_type", "order_number"]
         return new_sheet
     else:
         return document.worksheet(name_date)

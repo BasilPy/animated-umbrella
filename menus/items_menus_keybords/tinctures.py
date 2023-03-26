@@ -3,38 +3,38 @@ from menus.models import MenuItem, MultiLangText
 all_tinctures = [
     MenuItem(
         name=MultiLangText(
-            eng='t.Cherry 🍒 1500₸',
-            ru='н.Вишня 🍒 1500₸',
-            kz='т.Шие 🍒 1500₸'
+            eng='t.Cherry 🍒 1000₸',
+            ru='н.Вишня 🍒 1000₸',
+            kz='т.Шие 🍒 1000₸'
         ),
-        price=1500,
+        price=1000,
         item_id='t_cherry'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='t.Currant ◇ 1500₸',
-            ru='н.Смородина ◇ 1500₸',
-            kz='т.Қарақат ◇ 1500₸'
+            eng='t.Currant # 1000₸',
+            ru='н.Смородина # 1000₸',
+            kz='т.Қарақат # 1000₸'
         ),
-        price=1500,
+        price=1000,
         item_id='t_currant'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='t.Sea buckthorn ◇ 1500₸',
-            ru='н.Облепиха ◇ 1500₸',
-            kz='т.Теңіз шырғаны ◇ 1500₸'
+            eng='t.Cranberry # 1000₸',
+            ru='н.Клюква # 1000₸',
+            kz='т.Мүкжидек # 1000₸'
         ),
-        price=1500,
-        item_id='t_sea_buckthorn'
+        price=1000,
+        item_id='t_cranberry'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='t.Cranberry ◇ 1500₸',
-            ru='н.Клюква ◇ 1500₸',
-            kz='т.Мүкжидек ◇ 1500₸'
+            eng='JÄGERMEISTER # 2000₸',
+            ru='JÄGERMEISTER # 2000₸',
+            kz='JÄGERMEISTER # 2000₸'
         ),
-        price=1500,
-        item_id='t_cranberry'
+        price=2000,
+        item_id='jagermeister'
     )
 ]
