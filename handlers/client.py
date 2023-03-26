@@ -15,7 +15,7 @@ instance_sqlite = SQLWorker()
 async def set_default_commands(db: Dispatcher):
     await db.bot.set_my_commands(
         [
-            types.BotCommand('start', 'Запустить бота'),
+            types.BotCommand('start', 'Выбрать язык заново'),
         ]
     )
 
@@ -72,7 +72,7 @@ async def pass_juices(call: types.CallbackQuery):
 async def pass_items_to_show_basket(call: types.CallbackQuery):
     orders, cost = SQLWorker.get_order_and_total_cost(instance_sqlite, call.from_user.id)
     await call.message.answer(
-        text=f"{orders} \n {cost}",
+        text=f"{orders} \ntotal: {cost}₸",
     )
 
 
@@ -122,7 +122,8 @@ async def get_payment(call: types.CallbackQuery):
 
     if call.data == "cash":
         await call.message.answer(
-            text=f"Пожалуйста подойдите к бармену и скажите номер заказа: {instance_sqlite.current_orger}"
+            text=f"Подойдите к бару и скажите номер заказа: {instance_sqlite.current_orger}\n\
+                   __Рахмет__"
         )
     elif call.data == "kaspi":
         await call.message.answer(
@@ -133,9 +134,11 @@ async def get_payment(call: types.CallbackQuery):
         )
         await call.message.answer(
             text=f"АЛЕКСАНДР Н.\n\
-                 после подойдите к бармену,\n\
-                 скажите номер заказа {instance_sqlite.current_orger} \n\
-                 и покажите чек"
+                 после подойдите к бару,\n\
+                 скажите номер заказа: {instance_sqlite.current_orger} \n\
+                 и покажите чек :)\n\
+                 __Рахмет__"
+
         )
 
 def register_handlers_client(_dispatcher: Dispatcher):
