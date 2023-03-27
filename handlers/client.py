@@ -72,17 +72,28 @@ async def pass_juices(call: types.CallbackQuery):
 
 async def pass_items_to_show_basket(call: types.CallbackQuery):
     orders, cost = SQLWorker.get_order_and_total_cost(instance_sqlite, call.from_user.id)
+    current_lang = str(SQLWorker.get_user_lang(instance_sqlite, call.from_user.id))
     await call.message.answer(
         text=f"{orders} \ntotal: {cost}₸",
+        reply_markup=get_fork_decision_markup(fork=fork_finish, lang=current_lang)
+    )
+    await call.bot.delete_message(
+        chat_id=call.message.chat.id, message_id=call.message.message_id
+
     )
 
 
 async def clear_and_go_to_main_menu(call: types.CallbackQuery):
     SQLWorker.clear_by_id(instance_sqlite, call.from_user.id)
-    new_call = types.CallbackQuery()
+    current_lang = str(SQLWorker.get_user_lang(instance_sqlite, call.from_user.id))
     await call.message.answer(
-        text=f"all clear :)",
+        text=f"all clear :)\n" + get_title_fork(new_order, current_lang),
+        reply_markup=get_fork_decision_markup(fork=new_order, lang=current_lang)
     )
+    await call.bot.delete_message(
+        chat_id=call.message.chat.id, message_id=call.message.message_id
+    )
+
 
 
 async def pass_fork_decision(call: types.CallbackQuery):
@@ -90,6 +101,7 @@ async def pass_fork_decision(call: types.CallbackQuery):
     # print("call command", call.data)
     # print("call id", call.id)
     # print("user id", call.from_user.id)
+
     SQLWorker.update_order_and_payment(instance_sqlite, call.from_user.id, all_dict_id_name[call.data], all_dict_id_price[call.data])
     await call.message.answer(
         text=get_title_fork(fork_finish, current_lang),
@@ -112,6 +124,7 @@ async def send_row_to_google_sheets(call: types.CallbackQuery):
     await call.bot.delete_message(
         chat_id=call.message.chat.id, message_id=call.message.message_id
     )
+
 
 
 async def get_payment(call: types.CallbackQuery):
