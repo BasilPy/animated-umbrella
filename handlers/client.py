@@ -119,12 +119,19 @@ async def get_payment(call: types.CallbackQuery):
     SQLWorker.update_payment_type_and_num_order(instance_sqlite, datetime.datetime.now().strftime('%-H:%-M:%-S'),
                                                 call.from_user.id, call.data, instance_sqlite.current_orger)
     add_data_to_sheet.add_users_string(SQLWorker.get_one_raw(instance_sqlite, call.from_user.id))
+    orders, cost = SQLWorker.get_order_and_total_cost(instance_sqlite, call.from_user.id)
     if call.data == "cash":
+        await call.message.answer(
+            text=f"Order:\n{orders}\ntotal: {cost}₸"
+        )
         await call.message.answer(
             text=f"Подойдите к бару и скажите номер заказа: {instance_sqlite.current_orger}\n\
                    __Рахмет__"
         )
     elif call.data == "kaspi":
+        await call.message.answer(
+            text=f"Order:\n{orders}\ntotal: {cost}₸"
+        )
         await call.message.answer(
             text="Перевод на kaspi по номеру:"
         )
@@ -138,14 +145,14 @@ async def get_payment(call: types.CallbackQuery):
                  и покажите чек :)\n\
                  __Рахмет__"
         )
-        current_lang = str(SQLWorker.get_user_lang(instance_sqlite, call.from_user.id))
-        await call.message.answer(
-            text=get_title_fork(new_order, current_lang),
-            reply_markup=get_fork_decision_markup(fork=new_order, lang=current_lang)
-        )
-        await call.bot.delete_message(
-            chat_id=call.message.chat.id, message_id=call.message.message_id
-        )
+    current_lang = str(SQLWorker.get_user_lang(instance_sqlite, call.from_user.id))
+    await call.message.answer(
+        text=get_title_fork(new_order, current_lang),
+        reply_markup=get_fork_decision_markup(fork=new_order, lang=current_lang)
+    )
+    await call.bot.delete_message(
+        chat_id=call.message.chat.id, message_id=call.message.message_id
+    )
 
 
 def register_handlers_client(_dispatcher: Dispatcher):
