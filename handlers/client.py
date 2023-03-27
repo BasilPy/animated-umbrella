@@ -122,7 +122,7 @@ async def get_payment(call: types.CallbackQuery):
     orders, cost = SQLWorker.get_order_and_total_cost(instance_sqlite, call.from_user.id)
     if call.data == "cash":
         await call.message.answer(
-            text=f"Order:\n{orders}\ntotal: {cost}₸"
+            text=f"Order:{orders}\ntotal: {cost}₸"
         )
         await call.message.answer(
             text=f"Подойдите к бару и скажите номер заказа: {instance_sqlite.current_orger}\n\
@@ -130,7 +130,7 @@ async def get_payment(call: types.CallbackQuery):
         )
     elif call.data == "kaspi":
         await call.message.answer(
-            text=f"Order:\n{orders}\ntotal: {cost}₸"
+            text=f"Order:{orders}\ntotal: {cost}₸"
         )
         await call.message.answer(
             text="Перевод на kaspi по номеру:"
@@ -140,8 +140,8 @@ async def get_payment(call: types.CallbackQuery):
         )
         await call.message.answer(
             text=f"АЛЕКСАНДР Н.\n\
-                 после подойдите к бару,\n\
-                 скажите номер заказа: {instance_sqlite.current_orger} \n\
+            после подойдите к бару,\n\
+            скажите номер заказа: {instance_sqlite.current_orger} \n\
                  и покажите чек :)\n\
                  __Рахмет__"
         )
