@@ -36,5 +36,14 @@ all_tinctures = [
         ),
         price=2000,
         item_id='jagermeister'
-    )
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
+    ),
 ]

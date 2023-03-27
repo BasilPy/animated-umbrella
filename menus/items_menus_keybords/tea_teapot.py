@@ -12,9 +12,9 @@ all_tea = [
     ),
     MenuItem(
         name=MultiLangText(
-            eng='Black Tea /чайник/ 1500₸',
+            eng='Black Tea /teapot/ 1500₸',
             ru='Черный Чай /чайник/ 1500₸',
-            kz='Қара Шай /чайник/ 1500₸'
+            kz='Қара Шай /шайнек/ 1500₸'
         ),
         price=1500,
         item_id='teapot'
@@ -30,9 +30,9 @@ all_tea = [
     ),
     MenuItem(
         name=MultiLangText(
-            eng='Tashkent Tea /чайник/ 1500₸',
+            eng='Tashkent Tea /teapot/ 1500₸',
             ru='Ташкентский Чай /чайник/ 1500₸',
-            kz='Ташкент Шай /чайник/ 1500₸'
+            kz='Ташкент Шай /шайнек/ 1500₸'
         ),
         price=1500,
         item_id='tash_teapot'
@@ -48,12 +48,21 @@ all_tea = [
     ),
     MenuItem(
         name=MultiLangText(
-            eng='Fruit and berry Tea /чайник/ 1500₸',
+            eng='Fruit and berry Tea /teapot/ 1500₸',
             ru='Фруктово-ягодный Чай /чайник/ 1500₸',
-            kz='Жеміс және жидек /чайник/ 1500₸'
+            kz='Жеміс және жидек /шайнек/ 1500₸'
         ),
         price=1500,
         item_id='fruit_teapot'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
     ),
 
 

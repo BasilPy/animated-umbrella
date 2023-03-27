@@ -19,4 +19,5 @@ all_ciders = [
         price=1500,
         item_id='bozy'
     ),
+
 ]

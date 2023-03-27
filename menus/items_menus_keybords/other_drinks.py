@@ -3,21 +3,39 @@ from menus.models import MenuItem, MultiLangText
 all_other_drinks = [
     MenuItem(
         name=MultiLangText(
-            eng='250мл * Red BULL 🧚🏾‍ ️1500₸',
-            ru='250мл * RED BULL 🧚🏾‍ ️1500₸',
-            kz='250ml * RED BULL 🧚🏾‍ ️1500₸'
+            eng='250мл * Red BULL classic 🧚🏾‍ ️1500₸',
+            ru='250мл * RED BULL classic 🧚🏾‍ ️1500₸',
+            kz='250ml * RED BULL classic 🧚🏾‍ ️1500₸'
         ),
         price=1500,
         item_id='red_bull'
     ),
     MenuItem(
         name=MultiLangText(
-            eng='250ml * Cola 1000₸',
-            ru='250ml * Cola 1000₸',
-            kz='250мл * COLA 1000₸'
+            eng='250мл * Red BULL sugar-free 🧚🏾‍ ️1500₸',
+            ru='250мл * RED BULL sugar-free 🧚🏾‍ ️1500₸',
+            kz='250ml * RED BULL sugar-free 🧚🏾‍ ️1500₸'
+        ),
+        price=1500,
+        item_id='red_bull_free'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='250ml * Cola classic 1000₸',
+            ru='250ml * Cola classic 1000₸',
+            kz='250мл * Cola classic 1000₸'
         ),
         price=1000,
         item_id='cola'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='250ml * Cola sugar-free 1000₸',
+            ru='250ml * Cola sugar-free 1000₸',
+            kz='250мл * Cola sugar-free 1000₸'
+        ),
+        price=1000,
+        item_id='cola_free'
     ),
     MenuItem(
         name=MultiLangText(
@@ -36,6 +54,15 @@ all_other_drinks = [
         ),
         price=500,
         item_id='water'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
     ),
 
 ]

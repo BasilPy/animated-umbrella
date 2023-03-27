@@ -89,4 +89,13 @@ all_cocktails = [
         price=2500,
         item_id='aperol_spritz'
     ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
+    ),
 ]

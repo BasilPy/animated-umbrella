@@ -38,4 +38,13 @@ all_beer_cider = [
         price=2500,
         item_id='chester'
     ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
+    ),
 ]

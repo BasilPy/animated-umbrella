@@ -28,4 +28,13 @@ all_lemonades = [
         price=1000,
         item_id='fruity'
     ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
+    ),
 ]

@@ -31,12 +31,12 @@ all_snacks = [
 
     MenuItem(
         name=MultiLangText(
-            eng='Chelel @ 1000₸',
-            ru='Челель @ 1000₸ ',
-            kz='Чечел @ 1000₸ '
+            eng='Chechil @ 1000₸',
+            ru='Чечил @ 1000₸ ',
+            kz='Чечил @ 1000₸ '
         ),
         price=1000,
-        item_id='chelel'
+        item_id='сhechil'
     ),
     MenuItem(
         name=MultiLangText(
@@ -55,5 +55,14 @@ all_snacks = [
         ),
         price=2000,
         item_id='dried_meat'
+    ),
+    MenuItem(
+        name=MultiLangText(
+            eng='<-Main menu',
+            ru='<-Главное меню',
+            kz='<-Басты мәзір',
+        ),
+        price=0,
+        item_id='lang'
     ),
 ]
