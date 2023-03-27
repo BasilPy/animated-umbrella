@@ -12,10 +12,7 @@ sheet_list = document.worksheets()
 
 
 def check_existence(name_sheet: str):
-    if any(sheet.title == name_sheet for sheet in sheet_list):
-        return 1
-    else:
-        return 0
+    return any(sheet.title == name_sheet for sheet in sheet_list)
 
 
 def create_or_open(name_date: str):
@@ -29,6 +26,7 @@ def create_or_open(name_date: str):
 
 
 def add_users_string(data_user: list):
+
     sheet_adding = create_or_open(datetime.date.today().strftime("%d/%m/%Y"))
     row_data = [data_user]
     sheet_adding.append_rows(row_data)

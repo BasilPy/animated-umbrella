@@ -11,9 +11,9 @@ fork_finish = FinishFork(
     forks=[
         MenuItem(
             name=MultiLangText(
-                eng="Back to main Menu",
-                ru="Вернуться в главное меню",
-                kz="Негізгі мәзірге оралу"
+                eng='<-Main menu',
+                ru='<-Главное меню',
+                kz='<-Басты мәзір',
             ),
             price=0,
             item_id="lang"
@@ -21,7 +21,7 @@ fork_finish = FinishFork(
         MenuItem(
             name=MultiLangText(
                 eng="Сomplete the order",
-                ru="Завершить",
+                ru="Завершить заказ",
                 kz="тапсырысты аяқтаңыз"
             ),
             price=0,
@@ -47,17 +47,6 @@ fork_finish = FinishFork(
             price=0,
             item_id="clear"
         )
-
-        # MenuItem(
-        #
-        #     name=MultiLangText(
-        #         eng="🗣️👅💬",
-        #         ru="🗣️👅💬",
-        #         kz="🗣️👅💬"
-        #     ),
-        #     price=0,
-        #     item_id="again"
-        # )
     ]
 )
 

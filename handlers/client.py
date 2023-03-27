@@ -6,6 +6,7 @@ from menus.items_menus_keybords.all_items_id import all_dict_id_price, all_list_
 from common import get_category_items_markup, get_categories_markup, get_title_of_main_menu, \
     get_title_of_category, get_fork_decision_markup, get_title_fork
 from menus.fork_vs_finish.fork_decision import fork_finish
+from menus.fork_vs_finish.new_order import new_order
 from menus.fork_vs_finish.cash_or_transfer import payment_fork
 from menus.items_menus_keybords.juices import all_juice_fork
 from google_sheets import add_data_to_sheet
@@ -118,8 +119,6 @@ async def get_payment(call: types.CallbackQuery):
     SQLWorker.update_payment_type_and_num_order(instance_sqlite, datetime.datetime.now().strftime('%-H:%-M:%-S'),
                                                 call.from_user.id, call.data, instance_sqlite.current_orger)
     add_data_to_sheet.add_users_string(SQLWorker.get_one_raw(instance_sqlite, call.from_user.id))
-
-
     if call.data == "cash":
         await call.message.answer(
             text=f"Подойдите к бару и скажите номер заказа: {instance_sqlite.current_orger}\n\
@@ -138,8 +137,16 @@ async def get_payment(call: types.CallbackQuery):
                  скажите номер заказа: {instance_sqlite.current_orger} \n\
                  и покажите чек :)\n\
                  __Рахмет__"
-
         )
+        current_lang = str(SQLWorker.get_user_lang(instance_sqlite, call.from_user.id))
+        await call.message.answer(
+            text=get_title_fork(new_order, current_lang),
+            reply_markup=get_fork_decision_markup(fork=new_order, lang=current_lang)
+        )
+        await call.bot.delete_message(
+            chat_id=call.message.chat.id, message_id=call.message.message_id
+        )
+
 
 def register_handlers_client(_dispatcher: Dispatcher):
     _dispatcher.register_message_handler(welcome_and_choose_language, commands=['start', 'help', 'again'])
